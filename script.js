@@ -1,7 +1,7 @@
 const messagesContent = $(".msgs-content");
-const messagesInput = $(".msgs-input");
-const messageSubmit = $(".msgs-submit");
-const avatarImage = "logo.png";
+const messageInput = $(".msg-input");
+const messageSubmit = $(".msg-submit");
+const avatarImage = "img/logo.png";
 const fakeMessages = [
   "Teste 1",
   "Teste 2",
@@ -22,7 +22,7 @@ let minutes = 0;
 
 $(window).on("load", function () {
   messagesContent.mCustomScrollbar();
-  setTimeout(fakeMessages, 100);
+  setTimeout(fakeMessage, 100);
 });
 
 function upateScrollbar() {
@@ -42,4 +42,57 @@ function addTimestamp() {
     );
     $(".msg:last").append(timeStamp);
   }
+}
+
+function addMessageToPage(msg, isPersonal = false) {
+  const message = $('<div class="msg"></div>').text(msg);
+  if (isPersonal) {
+    message.addClass("msg-personal");
+  } else {
+    const figure = $('<figure class="avatar"></figure>');
+    const image = $("<img>").attr("src", avatarImage);
+    figure.append(image);
+    message.addClass("new").prepend(figure);
+  }
+  $(".mCSB_container").append(message);
+  addTimestamp();
+  upateScrollbar();
+}
+
+function insertMessage() {
+  const messageText = messageInput.val().trim();
+  if (messageText === "") {
+    return false;
+  }
+  addMessageToPage(messageText, true);
+  messageInput.val(null);
+  setTimeout(fakeMessage, 1000 + Math.random() * 20 * 100);
+}
+
+messageInput.on("keydown", function (e) {
+  if (e.which === 13) {
+    insertMessage();
+    return false;
+  }
+});
+
+messageSubmit.on("click", insertMessage);
+
+function fakeMessage() {
+  if (messageInput.val() !== "") {
+    return false;
+  }
+
+  const loadingMessage = $('<div class="msg loading new"></div>');
+  const figure = $('<figure class="avatar"></figure>');
+  const image = $("<img>").attr("src", avatarImage);
+  figure.append(image);
+  loadingMessage.append(figure).append($("<span></span>"));
+  $(".mCSB_container").append(loadingMessage);
+  upateScrollbar();
+
+  setTimeout(function () {
+    loadingMessage.remove();
+    addMessageToPage(fakeMessages.shift());
+  }, 1000 + Math.random() * 20 * 100);
 }
