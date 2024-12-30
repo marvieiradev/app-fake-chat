@@ -118,7 +118,7 @@ body {
   width: 265px;
 }
 
-.msg-box textarea:focus-webkit-placeholder {
+.msg-box textarea:focus:-webkit-placeholder {
   color: transparent;
 }
 
@@ -186,7 +186,7 @@ body {
   position: absolute;
   z-index: 1;
   bottom: -15px;
-  left: -33px;
+  left: -35px;
   border-radius: 30px;
   width: 30px;
   height: 30px;
@@ -272,8 +272,8 @@ body {
   z-index: 2;
   margin-top: 4px;
   margin-left: -7px;
-  animation: ball 0.45 cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-  -webkit-animation: ball 0.45 cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
 }
 
 .msgs .msg.loading span::after {
@@ -290,8 +290,8 @@ body {
   z-index: 2;
   margin-top: 4px;
   margin-left: 7px;
-  animation: ball 0.45 cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-  -webkit-animation: ball 0.45 cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
   animation-delay: 0.3s;
   -webkit-animation-delay: 0.3s;
 }
@@ -301,7 +301,7 @@ body {
   opacity: 0;
 }
 
-.mCSB_inside > .mCSB_conatiner {
+.mCSB_inside > .mCSB_container {
   margin-right: 0;
   padding: 0 10px;
 }
