@@ -25,23 +25,10 @@ $(window).on("load", function () {
   setTimeout(fakeMessage, 100);
 });
 
-function upateScrollbar() {
+function updateScrollbar() {
   messagesContent
     .mCustomScrollbar("update")
-    .mCustomScrollbar("scrollTo", "bottom", { scrollInertia: 10, timeout: 0 });
-}
-
-function addTimestamp() {
-  const date = new Date();
-  const minutesNow = date.getMinutes();
-
-  if (minutes !== minutesNow) {
-    minutes = minutesNow;
-    const timeStamp = $('<div class"timestamp"></div>').text(
-      `${date.getHours()}:${minutes}`
-    );
-    $(".msg:last").append(timeStamp);
-  }
+    .mCustomScrollbar("scrollTo", "last", { scrollInertia: 10, timeout: 0 });
 }
 
 function addMessageToPage(msg, isPersonal = false) {
@@ -55,8 +42,7 @@ function addMessageToPage(msg, isPersonal = false) {
     message.addClass("new").prepend(figure);
   }
   $(".mCSB_container").append(message);
-  addTimestamp();
-  upateScrollbar();
+  updateScrollbar();
 }
 
 function insertMessage() {
@@ -66,7 +52,7 @@ function insertMessage() {
   }
   addMessageToPage(messageText, true);
   messageInput.val(null);
-  setTimeout(fakeMessage, 1000 + Math.random() * 20 * 100);
+  setTimeout(fakeMessage, 300 + Math.random() * 20 * 100);
 }
 
 messageInput.on("keydown", function (e) {
@@ -89,10 +75,10 @@ function fakeMessage() {
   figure.append(image);
   loadingMessage.append(figure).append($("<span></span>"));
   $(".mCSB_container").append(loadingMessage);
-  upateScrollbar();
+  updateScrollbar();
 
   setTimeout(function () {
     loadingMessage.remove();
     addMessageToPage(fakeMessages.shift());
-  }, 1000 + Math.random() * 20 * 100);
+  }, 300 + Math.random() * 20 * 100);
 }
