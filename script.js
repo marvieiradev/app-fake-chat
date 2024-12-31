@@ -3,19 +3,19 @@ const messageInput = $(".msg-input");
 const messageSubmit = $(".msg-submit");
 const avatarImage = "img/logo.png";
 const fakeMessages = [
-  "Teste 1",
-  "Teste 2",
-  "Teste 3",
-  "Teste 4",
-  "Teste 5",
-  "Teste 6",
-  "Teste 7",
-  "Teste 8",
-  "Teste 9",
-  "Teste 10",
-  "Teste 11",
-  "Teste 12",
-  "Teste 13",
+  "Mensagem 1",
+  "Mensagem 2",
+  "Mensagem 3",
+  "Mensagem 4",
+  "Mensagem 5",
+  "Mensagem 6",
+  "Mensagem 7",
+  "Mensagem 8",
+  "Mensagem 9",
+  "Mensagem 10",
+  "Mensagem 11",
+  "Mensagem 12",
+  "Mensagem 13",
 ];
 
 let minutes = 0;
@@ -28,7 +28,7 @@ $(window).on("load", function () {
 function updateScrollbar() {
   messagesContent
     .mCustomScrollbar("update")
-    .mCustomScrollbar("scrollTo", "last", { scrollInertia: 10, timeout: 0 });
+    .mCustomScrollbar("scrollTo", "bottom", { scrollInertia: 10, timeout: 0 });
 }
 
 function addMessageToPage(msg, isPersonal = false) {
