@@ -1,21 +1,16 @@
 const messagesContent = $(".msgs-content");
 const messageInput = $(".msg-input");
 const messageSubmit = $(".msg-submit");
-const avatarImage = "img/logo.png";
+const avatarImage = "media/logo.png";
+let msgCount = 0;
+
 const fakeMessages = [
-  "Mensagem 1",
-  "Mensagem 2",
-  "Mensagem 3",
-  "Mensagem 4",
-  "Mensagem 5",
-  "Mensagem 6",
-  "Mensagem 7",
-  "Mensagem 8",
-  "Mensagem 9",
-  "Mensagem 10",
-  "Mensagem 11",
-  "Mensagem 12",
-  "Mensagem 13",
+  `Olá seja bem-vindo!<br> Como se chama?`,
+  `Belo nome!<br> Gostaria de ver nosso produto?`,
+  `<img src="media/product.png" width="150px" heigth="150px"/><br>Aqui está, muito lindo né?`,
+  `<audio controls><source src="media/voice.mp3" type="audio/mpeg" /></audio>`,
+  `Por apenas R$ 49,99 você pode levar <br> pra casa, essa camisa maravilhosa`,
+  ``,
 ];
 
 let minutes = 0;
@@ -32,7 +27,12 @@ function updateScrollbar() {
 }
 
 function addMessageToPage(msg, isPersonal = false) {
-  const message = $('<div class="msg"></div>').text(msg);
+  msgCount++;
+  if (msgCount >= 10) {
+    return;
+  }
+
+  const message = $(`<div class="msg">${msg}</div>`);
   if (isPersonal) {
     message.addClass("msg-personal");
   } else {
