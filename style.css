@@ -309,6 +309,12 @@ body {
   background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
+audio {
+  filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(99%);
+  width: 210px;
+  height: 25px;
+}
+
 @-webkit-keyframes bounce {
   0% {
     transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
